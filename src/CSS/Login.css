@@ -1,0 +1,30 @@
+.login-main-div{
+    margin:200px 400px 200px 400px;
+    padding: 30px;
+    border: 3px solid #282c34;
+    background-color: lightslategray;
+}
+
+.login-h1{
+    text-justify: none;
+    color:black;
+}
+.login-level{
+    margin: 10px;
+    text-decoration-color: black;
+    text-decoration-style: solid;
+}
+.login-input{
+    padding: 5px;
+    margin: 15px;
+}
+.login-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
