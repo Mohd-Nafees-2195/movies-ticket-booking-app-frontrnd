@@ -4,12 +4,12 @@ import { BASE_URL } from "../Services/Config";
 import axios, { formToJSON } from "axios";
 import { Form, FormGroup } from "reactstrap";
 import {ToastContainer, toast } from "react-toastify";
-
+import { useNavigate } from 'react-router-dom';
 
 const Register=()=>{
 
     const [data,setData]=useState({});
-
+    const redirect=useNavigate();
     //Form Handler
     const handleForm=(e)=>{
         registration(data);
@@ -34,6 +34,7 @@ const Register=()=>{
                 }
             }else{
                 toast.success("Registration Success!!",{position:"top-center"} );
+                redirect("/");
             }
             
             //console.log("Success!!!!");

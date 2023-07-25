@@ -2,12 +2,15 @@ import React,{ useEffect,useState} from "react";
 import '../CSS/register.css'
 import { BASE_URL } from "../Services/Config";
 import axios, { formToJSON } from "axios";
-import { Form, FormGroup } from "reactstrap";
+import { Form, FormGroup, Nav } from "reactstrap";
 import {ToastContainer, toast} from "react-toastify"
+import { useNavigate } from 'react-router-dom';
+import Logout from "../Components/Logout";
 
 function Login(){
 
     const [data,setData]=useState({});
+    const redirect=useNavigate();
 
     const handleForm=(e)=>{
         login(data);
@@ -17,7 +20,7 @@ const login=(data)=>{
    console.log(data);
     axios.post(`${BASE_URL}/auth/login`,data).then(
         (response)=>{
-            if(response.data!=null){
+            if(response.data.user!=null){
             if(response.data.user.username==="Login Failed"){
                 if(response.data.user.email==="Please Fill All Details"){
                     toast.error("Login failed!! Please Fill All Details",{position:"top-center"});
@@ -26,20 +29,32 @@ const login=(data)=>{
                 }else if(response.data.user.email==="Incorrect Email or Password"){
                     toast.error("Login failed!! Incorrect Email or Password",{position:"top-center"});
                 }else{
-                    toast.success("Login Success",{position:"top-center"} );
+                    toast.error("Login failed! Try Again",{position:"top-center"} );
+                    
                 }
             }else{
+                //const[sharedData]=useState({jwtToken:response.data.jwt,emailId:data.email})
+                //console.log(response.data.jwt);
+                //JWTTOKEN=response.data.jwt;
+                //emailId=data.email;
+                //navigate('/main', { state: { email: email } });
+                localStorage.setItem('token', response.data.jwt);
+                localStorage.setItem('email', data.email);
                 toast.success("Login Success",{position:"top-center"} );
+                redirect("/home");
             }
-            
-            console.log(response.data);
+           }else{
+            toast.error("Login failed! Try Again",{position:"top-center"} );
            }
         },(error)=>{
             toast.error("Login failed!! Try Again",{position:"top-center"});
-            console.log(error.data);
         }
     );
 }
+
+ const ResetPassword=()=>{
+  redirect("/ResetPassword");
+ }
 
  return (
     <div className="form">
@@ -73,7 +88,8 @@ const login=(data)=>{
                     </div>
 
                     <div className="register-btn">
-                        <button type="submit" className="btn-primary">Login</button>
+                        <button type="submit" className="btn-primary m-2">Login</button>
+                        {/* <button type="submit" className="btn-primary" >Reset Password</button> */}
                     </div>
                 </Form>
             </div>

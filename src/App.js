@@ -9,6 +9,9 @@ import Register from "./Components/Register";
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import Login from './Login/Login';
+import ResetPassword from './Components/ResetPassword';
+import VerifyOTP from './Components/VerifyOTP';
+
 // import Movie from "./Components/Movie";
 // import axios from "axios";
 
@@ -35,9 +38,12 @@ function App() {
             </Col>
             <Col md={10}>
               <Routes>
-                <Route path='/' Component={Home} exact/>
+                <Route path='/' Component={Login} exact/>
+                <Route path='/home' Component={Home} exact/>
                 <Route path='/register' Component={Register} exact/>
-                <Route path='/login' Component={Login} exact/>
+                
+                <Route path='/resetpassword' Component={ResetPassword} exact/>
+                <Route path='/verifyotp' Component={VerifyOTP} exact/>
               </Routes>
             </Col>
           </Row>
