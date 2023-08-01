@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import Login from './Login/Login';
 import ResetPassword from './Components/ResetPassword';
 import VerifyOTP from './Components/VerifyOTP';
+import BookTickets from './Components/BookTickets';
 
 // import Movie from "./Components/Movie";
 // import axios from "axios";
@@ -38,6 +39,7 @@ function App() {
             </Col>
             <Col md={10}>
               <Routes>
+                <Route path='/book-tickets' Component={BookTickets} exact/>
                 <Route path='/' Component={Login} exact/>
                 <Route path='/home' Component={Home} exact/>
                 <Route path='/register' Component={Register} exact/>

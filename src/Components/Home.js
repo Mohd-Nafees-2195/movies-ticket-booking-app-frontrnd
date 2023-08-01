@@ -1,20 +1,20 @@
 import React,{useEffect,useState} from "react";
 
-import {Card, Container, Button, CardGroup, Pagination, PaginationItem,PaginationLink} from "reactstrap";
+import {Pagination} from "reactstrap";
 import Movie from "./Movie";
 import Logout from "./Logout";
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../Services/Config";
 import axios from "axios";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const Home=()=>{
 
     const redirect=useNavigate();
     const [movies, setMovies] = useState([]);
-    const [imageData,setImageData]=useState('');
-    const start=0;
-    const end=1;
+    const limit=4;
+    let total=0;
 
     //Creating request with authorization header
     const authAxios=axios.create({
@@ -43,37 +43,53 @@ const Home=()=>{
       }, []); 
 
       const loadMovies=()=>{
+        let start=movies.length;
+        let end=start+limit-1; 
+        console.log(start+" "+ end);
         authAxios.get(`/user/get-all-movie?start=${start}&end=${end}`).then(
             (Response)=>{
                 console.log(Response.data.imageData);
-                setMovies(Response.data);
+                const allMovies=[...movies,...Response.data];
+                total=allMovies.length;
+                setMovies(allMovies);
+                console.log(allMovies);
             },(error)=>{
                 console.log(error);
             }
         );
       }
     
-   
+   const fetchMoreData=()=>{
+     if(movies.length<total)
+       loadMovies();
+   }
  
       return (
           <div>
             <Logout></Logout>
-            <Pagination>
+
+            <InfiniteScroll
+
+                dataLength={movies.length}
+                next={fetchMoreData}
+                style={{ display: 'flex',gap: '20px',flexWrap: 'wrap',justifyContent: 'left' }} //To put endMessage and loader to the top.
+                //inverse={true} //
+                hasMore={false}
+                loader={<h4>Loading...</h4>}
+                //scrollableTarget="scrollableDiv"
+                >
+
                 {
                     movies.length>0
                     ? movies.map(
                         (movie)=>
-                            //console.log(movie.movieName);
                             <Movie newMovie={movie}/>
-                        //<PaginationItem >
-                           
-                       // </PaginationItem>
                      )
                     :"No Data"
                 }
                 
-               
-            </Pagination>
+
+            </InfiniteScroll>
         </div>
     );
 }

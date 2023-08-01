@@ -1,11 +1,10 @@
 import React,{ useEffect,useState} from "react";
 import '../CSS/register.css'
 import { BASE_URL } from "../Services/Config";
-import axios, { formToJSON } from "axios";
-import { Form, FormGroup, Nav } from "reactstrap";
-import {ToastContainer, toast} from "react-toastify"
+import { Form, FormGroup } from "reactstrap";
+import {toast} from "react-toastify"
 import { useNavigate } from 'react-router-dom';
-import Logout from "../Components/Logout";
+import axios from "axios";
 
 function Login(){
 
