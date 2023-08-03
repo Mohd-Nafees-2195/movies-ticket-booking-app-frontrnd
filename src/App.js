@@ -12,6 +12,7 @@ import Login from './Login/Login';
 import ResetPassword from './Components/ResetPassword';
 import VerifyOTP from './Components/VerifyOTP';
 import BookTickets from './Components/BookTickets';
+import Ticket from './Components/Ticket';
 
 // import Movie from "./Components/Movie";
 // import axios from "axios";
@@ -39,10 +40,11 @@ function App() {
             </Col>
             <Col md={10}>
               <Routes>
-                <Route path='/book-tickets' Component={BookTickets} exact/>
+                <Route path='/book-tickets/:id' Component={BookTickets}/>
                 <Route path='/' Component={Login} exact/>
                 <Route path='/home' Component={Home} exact/>
                 <Route path='/register' Component={Register} exact/>
+                <Route path='/ticket/:id' Component={Ticket} exact/>
                 
                 <Route path='/resetpassword' Component={ResetPassword} exact/>
                 <Route path='/verifyotp' Component={VerifyOTP} exact/>

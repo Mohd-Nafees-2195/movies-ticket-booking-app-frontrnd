@@ -20,3 +20,28 @@
     font-size: 14px;
   }
   
+
+  /* CSS for BookTickets Section  */
+
+  .outer-div{
+    display: block;
+    margin: 30px;
+    padding: 10px;
+    background-color: rgba(10, 102, 90, 0.664);
+  }
+  .inner-div{
+    background-color: rgba(10, 10, 10, 0.555);
+    display:block;
+  }
+  .main-btn{
+    background-color: rgb(18, 56, 18);
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .label{
+   display: inline-flex;
+   text-align: center;
+   color: #ccc;
+   
+  }

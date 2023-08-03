@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from "react";
 
-import {Pagination} from "reactstrap";
 import Movie from "./Movie";
 import Logout from "./Logout";
 import { useNavigate } from 'react-router-dom';
@@ -45,14 +44,14 @@ const Home=()=>{
       const loadMovies=()=>{
         let start=movies.length;
         let end=start+limit-1; 
-        console.log(start+" "+ end);
+        //console.log(start+" "+ end);
         authAxios.get(`/user/get-all-movie?start=${start}&end=${end}`).then(
             (Response)=>{
-                console.log(Response.data.imageData);
+                //console.log(Response.data.imageData);
                 const allMovies=[...movies,...Response.data];
                 total=allMovies.length;
                 setMovies(allMovies);
-                console.log(allMovies);
+                //console.log(allMovies);
             },(error)=>{
                 console.log(error);
             }
@@ -64,6 +63,7 @@ const Home=()=>{
        loadMovies();
    }
  
+
       return (
           <div>
             <Logout></Logout>

@@ -2,6 +2,7 @@ import React from "react";
 import { Card,CardBody,Button,CardTitle,CardSubtitle } from "reactstrap";
 
 const Movie=({newMovie})=>{
+
     return (
             <Card
                 style={{
@@ -25,7 +26,11 @@ const Movie=({newMovie})=>{
                 {/* <CardText>
                    Some quick example text to build on the card title and make up the bulk of the card‘s content.
                 </CardText> */}
-                <Button href="/book-tickets">Book Ticket</Button>
+                <Button href={ `/book-tickets/${newMovie.movieId}` }
+                  style={{
+                    backgroundColor:'green'
+                   }}
+                >Book Ticket</Button>
             </CardBody>
             </Card>
       );
