@@ -3,6 +3,8 @@ import { Button, Form,FormGroup } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../Services/Config";
+import {ListGroup,ListGroupItem} from "reactstrap";
+import '../CSS/register.css'
 
 const ResetPassword=()=>{
 
@@ -42,8 +44,19 @@ const ResetPassword=()=>{
                 }}
             />
         </FormGroup>
-        <Button type="submit">Send OTP</Button>
+          <Button type="submit">Send OTP</Button>
        </Form>
+       <div className="register-btn">
+       <ListGroup className="p-1 m-1">
+            <ListGroupItem className="p-1 m-1" tag="a" href="/" action>
+                Login
+            </ListGroupItem>
+            <ListGroupItem className="p-1 m-1" tag="a" href="/register" action>
+                Register
+            </ListGroupItem>      
+        </ListGroup>
+
+        </div>
      </div>
     </div>
  );

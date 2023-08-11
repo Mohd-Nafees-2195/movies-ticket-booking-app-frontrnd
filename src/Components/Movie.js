@@ -10,13 +10,14 @@ const Movie=({newMovie})=>{
                     height:'auto',
                     margin:'10px',
                     marginBottom: '10px',
-                    flex: '0 0 19%'
+                    flex: '0 0 22.3%',
                 }}
+                
             >
             <img
                 alt={newMovie.movieName}
                 src={`data:image/jpeg;base64,${newMovie.imageData}`}   
-                //src="https://picsum.photos/600/700"
+               className="image"
             />
             <CardBody>
                 <CardTitle tag="h5">{ newMovie.movieName }</CardTitle>

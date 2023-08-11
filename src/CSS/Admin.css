@@ -1,0 +1,29 @@
+/* CSS for MenuBar */
+
+.main-nav{
+    background-color: rgb(198, 214, 214);
+    border-radius: 5px;
+}
+
+.inner-nav{
+    padding: 10px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: rgb(23, 26, 29);
+}
+
+
+.theater-card-body{
+  background-color: rgb(205, 219, 215);
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  width: none;
+}
+
+.theater-label{
+    padding: 5px;
+    display: inline;
+    text-align: center;
+}

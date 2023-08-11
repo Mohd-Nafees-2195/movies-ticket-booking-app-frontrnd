@@ -20,6 +20,28 @@
     font-size: 14px;
   }
   
+  /* CSS for Movie */
+
+  .container1{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .image{
+    width: 95%;
+    height: 90%;
+    object-fit: cover; 
+    margin: 5px;
+    align-items: center;
+  }
+  .imagebg{
+    width: 50%;
+    height: 50%;
+    object-fit: cover; 
+    margin-left: 300px;
+    margin-top: 10px;
+    align-items: center;
+  }
 
   /* CSS for BookTickets Section  */
 

@@ -1,0 +1,18 @@
+.search-div{
+    margin: 10px;
+}
+
+.search-input{
+   border-radius: 50px;
+   display: inline;
+   width: 50%;
+   background-color: #ebe2e1;
+}
+
+.search-button{
+    display: inline;
+    border-radius: 30px;
+}
+.scroll-div{
+    margin-top: 20px;
+}

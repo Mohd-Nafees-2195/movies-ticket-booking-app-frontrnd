@@ -31,8 +31,9 @@ const Logout=()=>{
 
   return(
     <div>
-        
-        <Button onClick={hLogout} className="p-2 m-2">Logout</Button>
+        {/* <a onClick={hLogout} href="#">Logout</a> */}
+        {/* <button onClick={hLogout}>Logout</button> */}
+        <Button  onClick={hLogout}>Logout</Button>
     </div>
   );
 }

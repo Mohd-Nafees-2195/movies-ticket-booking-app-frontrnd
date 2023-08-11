@@ -1,10 +1,11 @@
-import React,{Fragment, useEffect,useState} from "react";
-import '../CSS/register.css'
+import React,{Fragment,useState} from "react";
+import '../CSS/register.css';
 import { BASE_URL } from "../Services/Config";
-import axios, { formToJSON } from "axios";
-import { Form, FormGroup } from "reactstrap";
-import {ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { Button, Form, FormGroup } from "reactstrap";
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import {ListGroup,ListGroupItem} from "reactstrap";
 
 const Register=()=>{
 
@@ -16,9 +17,39 @@ const Register=()=>{
         e.preventDefault();
     }
 
+    function isValidEmail(email) {
+        return /\S+@\S+\.\S+/.test(email);
+      }
+    function validatePassword(password){
+        var re = {
+            capital: /(?=.*[A-Z])/,
+            length: /(?=.{6,20}$)/,
+            specialChar: /[ -\/:-@\[-\`{-~]/,
+            digit: /(?=.*[0-9])/,
+        };
+        return (
+            re.capital.test(password) &&
+            re.length.test(password) &&
+            re.specialChar.test(password) &&
+            re.digit.test(password)
+        );
+    } 
+
     const registration=(data)=>{
         //console.log(data);
         
+        if(isValidEmail(data.email)){
+            if(validatePassword(data.password)){
+       
+            }else{
+               toast.error("password must Contains atleast one Capital letter,one special symbol, one digit and length b/w 6 to 20",{position:"top-center"} );
+               return;
+            }
+          }else{
+           toast.error("Please enter valid email",{position:"top-center"} );
+           return;
+          }
+
       axios.post(`${BASE_URL}/auth/register`,data).then(
          (response)=>{
             //console.log(response);
@@ -90,7 +121,17 @@ const Register=()=>{
                     </div>
 
                     <div className="register-btn">
-                        <button type="submit" className="btn-primary">Register</button>
+                        {/* <button type="submit" className="btn-primary">Register</button> */}
+                        <Button type="submit" className="btn-primary">Register</Button><br/><br/>
+                        <ListGroup className="p-1 m-1">
+                            <ListGroupItem className="p-1 m-1" tag="a" href="/" action>
+                                Login
+                            </ListGroupItem>
+                            
+                            <ListGroupItem className="p-1 m-1" tag="a" href="/resetpassword" action>
+                                Reset Password
+                            </ListGroupItem>
+                        </ListGroup>
                     </div>
                 </Form>
             </div>
